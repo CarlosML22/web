@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi 14 de febrero?</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fad7df;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Pantalla de introducción */
+        #intro {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #intro h1 {
+            font-size: 2rem;
+            color: #ff3234;
+        }
+
+        .intro-gif img {
+            width: 250px;
+            height: auto;
+        }
+
+        #intro button {
+            font-size: 1.5rem;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff3234;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        #intro button:hover {
+            background-color: #ff6568;
+            transform: scale(1.1);
+        }
+
+        /* Contenido principal oculto al inicio */
+        #main-content {
+            text-align: center;
+            flex-direction: column;
+            align-items: center;
+            display: none;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #ff3234;
+            margin-bottom: 20px;
+            animation: latido 1.5s infinite alternate;
+        }
+
+        @keyframes latido {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        .gif-container {
+            margin-bottom: 20px;
+        }
+
+        .gif-container img {
+            width: 250px;
+            height: auto;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            font-size: 1.5rem;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff3234;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff6568;
+            transform: scale(1.1);
+        }
+
+        @keyframes mover {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(calc(100px - 50%), calc(100px - 50%)); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Pantalla de introducción -->
+    <div id="intro">
+        <h1>Hola Gabii, tengo algo que decirte 💌</h1>
+        <div class="intro-gif">
+            <img src="michi.gif" alt="GIF de bienvenida">
+        </div>
+        <button id="start-btn">Ver mensaje</button>
+    </div>
+
+    <!-- Contenido principal oculto al inicio -->
+    <div id="main-content">
+        <h1>¿Quieres ser mi 14 de febrero? 💖</h1>
+
+        <div class="gif-container">
+            <img src="osito.gif" alt="Imagen romántica">
+        </div>
+
+        <div class="buttons">
+            <button id="yes">Sí 💕</button>
+            <button id="no">No 💔</button>
+        </div>
+    </div>
+
+    <audio id="music" loop>
+        <source src="AMAR-Y-QUERER-José-José-_LETRA_.mp3" type="audio/mpeg">
+        Tu navegador no soporta el audio.
+    </audio>
+
+    <script>
+        document.getElementById("start-btn").addEventListener("click", function () {
+            document.getElementById("intro").style.display = "none";
+            document.getElementById("main-content").style.display = "flex";
+
+            let audio = document.getElementById("music");
+            audio.play().catch(error => console.log("Reproducción bloqueada:", error));
+        });
+
+        document.getElementById("no").addEventListener("mouseover", function () {
+            this.style.position = "absolute";
+            this.style.left = Math.random() * (window.innerWidth - 100) + "px";
+            this.style.top = Math.random() * (window.innerHeight - 100) + "px";
+        });
+
+        document.getElementById("yes").addEventListener("click", function () {
+            alert("¡Sabía que dirías que sí! 💖🥰");
+        });
+    </script>
+
+</body>
+</html>
